@@ -6,7 +6,7 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "check": "node --check server.js && node --check script.js"
+    "check": "node --check server.js && node --check script.js && node --check api/status.js && node --check api/kick-live.js && node --check api/admin/login.js && node --check api/admin/logout.js && node --check api/players/[id]/status.js && node --check api/_lib/auth.js && node --check api/_lib/responses.js && node --check api/_lib/supabase.js"
   },
   "keywords": [
     "el-bunker",
@@ -16,4 +16,3 @@
   ],
   "license": "UNLICENSED"
 }
-

@@ -4,6 +4,7 @@ Thumbs.db
 .vscode/
 .idea/
 .sixth/
+.vercel/
 
 # Dependencies and logs
 node_modules/
