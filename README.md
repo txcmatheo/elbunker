@@ -35,11 +35,6 @@ GitHub Pages no tiene servidor ni base de datos. Los cambios hechos desde el pan
 - Contador de vivos, muertos, creadores y streams en Kick.
 - Diseno responsive para escritorio, tablet y celular.
 
-## Verificacion Local
-
-```bash
-npm run check
-```
 
 Desarrollado por **CheeseStudio**.
 
