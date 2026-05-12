@@ -58,8 +58,9 @@ const players = creators.map((creator) => ({
   palette: makePalette(creator.name, creator.id)
 }));
 
-const eventStartDate = new Date(2026, 4, 12);
+const eventStartDateUtc = Date.UTC(2026, 4, 12, 22, 0, 0);
 const eventLengthDays = 6;
+const eventDayDurationMs = 24 * 60 * 60 * 1000;
 const kickCheckInterval = 5 * 60 * 1000;
 const streamStates = new Map(players.map((player) => [player.id, { status: "checking", label: "Revisando" }]));
 
@@ -98,9 +99,7 @@ function makeKickSlug(name) {
 }
 
 function getEventDay(now = new Date()) {
-  const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-  const start = new Date(eventStartDate.getFullYear(), eventStartDate.getMonth(), eventStartDate.getDate());
-  const daysSinceStart = Math.floor((today - start) / 86400000);
+  const daysSinceStart = Math.floor((now.getTime() - eventStartDateUtc) / eventDayDurationMs);
 
   if (daysSinceStart < 0) return 1;
   return Math.min(eventLengthDays, daysSinceStart + 1);
@@ -114,8 +113,9 @@ function updateEventDay() {
 
 function scheduleEventDayUpdate() {
   const now = new Date();
-  const nextMidnight = new Date(now);
-  nextMidnight.setHours(24, 0, 2, 0);
+  const nextDayIndex = Math.max(1, Math.floor((now.getTime() - eventStartDateUtc) / eventDayDurationMs) + 1);
+  const nextChange = eventStartDateUtc + (nextDayIndex * eventDayDurationMs) + 2000;
+  const delay = Math.max(1000, nextChange - now.getTime());
 
   window.setTimeout(() => {
     updateEventDay();
