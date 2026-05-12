@@ -13,7 +13,7 @@ const creators = [
   { id: 12, name: "AnsiChan", minecraftName: "AnsiChan" },
   { id: 13, name: "El mune", minecraftName: "ElMune" },
   { id: 14, name: "Pablots", minecraftName: "SoyPablots", minecraftUuid: "28cef8a8e41f4eb18cc878c5047c5558", skinTexture: "https://textures.minecraft.net/texture/1cf494c0e0210367b4c2912ab720428d91381d0bf615fadf92ef682efc06f7c6", kickName: "jpablots" },
-  { id: 15, name: "Male Gonzalez", minecraftName: "SacredRedstone", minecraftUuid: "963bc893a3094678b8905183b500a588", skinTexture: "https://textures.minecraft.net/texture/68dd169cf9bbac64a4ce58f6907a067b60b85908b200e161527fd40cadc72dda", kickName: "soymalegonzalez" },
+  { id: 15, name: "Male Gonzalez", minecraftName: "Malecitaaa", minecraftUuid: "563cdcf58a664d46ac70325c0bec33d6", skinTexture: "https://textures.minecraft.net/texture/7d8005d4cdb8e10719843ba53a0ceb9068b6ac83060bc88d2b97a6b76bd5d67e", kickName: "soymalegonzalez" },
   { id: 16, name: "ItsMidna", minecraftName: "itsMidnaa", minecraftUuid: "53c18cff767a4e7db4c5cd36b54a0eb6", skinTexture: "https://textures.minecraft.net/texture/290eb9b357038f093ae4c3643a2b1b2abd86d25a897d1c55d2ce1e292319c728" },
   { id: 17, name: "Rubynavx", minecraftName: "Rubynavx" },
   { id: 18, name: "Puji2", minecraftName: "Puji2" },
@@ -21,7 +21,7 @@ const creators = [
   { id: 20, name: "Diffrent", minecraftName: "Dlffrent", minecraftUuid: "b823aa920f244f03b609f04e2cb7999f", skinTexture: "https://textures.minecraft.net/texture/d95735f1139c4e5e78a9ff0ecaed814246427894530589d3ac24c7bf47825b11" },
   { id: 21, name: "Miigsh", minecraftName: "Migsh", kickName: "migsh" },
   { id: 22, name: "fairlygab", minecraftName: "fairlygab", kickName: "feirlygab" },
-  { id: 23, name: "shadoune", minecraftName: "shadoune", kickName: "shadoune666" },
+  { id: 23, name: "shadoune", minecraftName: "Shadoune777", minecraftUuid: "f0f919e9e4e642ce8a139cdd6c33e706", skinTexture: "https://textures.minecraft.net/texture/4ea787d1886503b1135e4deec29c3faba97aedbda194806e86105e3e7a3f7a1b", kickName: "shadoune666" },
   { id: 24, name: "Maggie", minecraftName: "Maggie", kickName: "maggiepepe" },
   { id: 25, name: "reydelacity", minecraftName: "reydelacity" },
   { id: 26, name: "Stephaniemx", minecraftName: "StephanieMX_", minecraftUuid: "dc546207985345c28e928a76ddbfc6af", skinTexture: "https://textures.minecraft.net/texture/94bb9e69488038591ea6f7757e9a1b0fff7a0ff0f8c9a46bb96e77c40edcdcd4" },
@@ -38,7 +38,8 @@ const creators = [
   { id: 37, name: "conterstine", minecraftName: "conterstine" },
   { id: 38, name: "vickypalami", minecraftName: "vickypalami" },
   { id: 39, name: "laparce", minecraftName: "laparce" },
-  { id: 40, name: "Girlofnox", minecraftName: "Girlofnox" }
+  { id: 40, name: "Girlofnox", minecraftName: "Girlofnox" },
+  { id: 41, name: "EDITS DE MRD", minecraftName: "Edits_De_MRD", minecraftUuid: "2db8c321022b4248b51ed94d8fcb311c", skinTexture: "https://textures.minecraft.net/texture/8354074d12ded9f68dadf7e62ae9305497dbc2ab2278954741553298580c66f", kickName: "editsdemrd" }
 ];
 
 const adminTokenKey = "bunker-admin-authenticated";
