@@ -10,18 +10,6 @@ Pagina publica:
 https://txcmatheo.github.io/elbunker/
 ```
 
-Panel admin local:
-
-```txt
-https://txcmatheo.github.io/elbunker/admin.html
-```
-
-Tambien funciona con:
-
-```txt
-https://txcmatheo.github.io/elbunker/?admin=1
-```
-
 ## Importante
 
 GitHub Pages no tiene servidor ni base de datos. Los cambios hechos desde el panel admin se guardan solo en el navegador donde se hacen. Para que todos los visitantes vean un cambio global, hay que editar el estado inicial en `script.js`, hacer commit y subirlo a GitHub.
