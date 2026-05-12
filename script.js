@@ -1,0 +1,573 @@
+const creators = [
+  { id: 1, name: "Westcol", minecraftName: "Westcol" },
+  { id: 2, name: "Samulx", minecraftName: "Samulx" },
+  { id: 3, name: "Emikukis", minecraftName: "Emikukis" },
+  { id: 4, name: "Komanche", minecraftName: "ElKomanche", minecraftUuid: "011740ce2a6b46a8934f7e3ff1c88661", skinTexture: "https://textures.minecraft.net/texture/241f2d7ce3002d512d75316ca8f8e2624cad20269dd538b785e92c2477c57f72" },
+  { id: 5, name: "Nessv", minecraftName: "Nesszv", kickName: "nesszv" },
+  { id: 6, name: "Juanfer la mata", minecraftName: "JuanferLaMata" },
+  { id: 7, name: "Glogloking", minecraftName: "Glogloking", kickName: "elglogloking" },
+  { id: 8, name: "LauraTula", minecraftName: "LauraTulaa" },
+  { id: 9, name: "Kassandra", minecraftName: "kassandraalvz001", minecraftUuid: "0b5f01fa6c1246e2ae926fc4955e874e", skinTexture: "https://textures.minecraft.net/texture/56a2932e1eb7d0ba142d819ce20be22db09e94a1c8dfa598784796aaf5ad501b", kickName: "kassandra-alvarez" },
+  { id: 10, name: "Sylvee", minecraftName: "Sylvee" },
+  { id: 11, name: "TheAlex 30", minecraftName: "TheAlex30" },
+  { id: 12, name: "AnsiChan", minecraftName: "AnsiChan" },
+  { id: 13, name: "El mune", minecraftName: "ElMune" },
+  { id: 14, name: "Pablots", minecraftName: "SoyPablots", minecraftUuid: "28cef8a8e41f4eb18cc878c5047c5558", skinTexture: "https://textures.minecraft.net/texture/1cf494c0e0210367b4c2912ab720428d91381d0bf615fadf92ef682efc06f7c6", kickName: "jpablots" },
+  { id: 15, name: "Male Gonzalez", minecraftName: "SacredRedstone", minecraftUuid: "963bc893a3094678b8905183b500a588", skinTexture: "https://textures.minecraft.net/texture/68dd169cf9bbac64a4ce58f6907a067b60b85908b200e161527fd40cadc72dda", kickName: "soymalegonzalez" },
+  { id: 16, name: "ItsMidna", minecraftName: "itsMidnaa", minecraftUuid: "53c18cff767a4e7db4c5cd36b54a0eb6", skinTexture: "https://textures.minecraft.net/texture/290eb9b357038f093ae4c3643a2b1b2abd86d25a897d1c55d2ce1e292319c728" },
+  { id: 17, name: "Rubynavx", minecraftName: "Rubynavx" },
+  { id: 18, name: "Puji2", minecraftName: "Puji2" },
+  { id: 19, name: "MaryBlog", minecraftName: "MaryBlog" },
+  { id: 20, name: "Diffrent", minecraftName: "Dlffrent", minecraftUuid: "b823aa920f244f03b609f04e2cb7999f", skinTexture: "https://textures.minecraft.net/texture/d95735f1139c4e5e78a9ff0ecaed814246427894530589d3ac24c7bf47825b11" },
+  { id: 21, name: "Miigsh", minecraftName: "Migsh", kickName: "migsh" },
+  { id: 22, name: "fairlygab", minecraftName: "fairlygab", kickName: "feirlygab" },
+  { id: 23, name: "shadoune", minecraftName: "shadoune", kickName: "shadoune666" },
+  { id: 24, name: "Maggie", minecraftName: "Maggie", kickName: "maggiepepe" },
+  { id: 25, name: "reydelacity", minecraftName: "reydelacity" },
+  { id: 26, name: "Stephaniemx", minecraftName: "StephanieMX_", minecraftUuid: "dc546207985345c28e928a76ddbfc6af", skinTexture: "https://textures.minecraft.net/texture/94bb9e69488038591ea6f7757e9a1b0fff7a0ff0f8c9a46bb96e77c40edcdcd4" },
+  { id: 27, name: "Bombi", minecraftName: "Bombi" },
+  { id: 28, name: "joethebeast", minecraftName: "joethebeast", kickName: "joe_the_beast" },
+  { id: 29, name: "carlogato", minecraftName: "carlogato" },
+  { id: 30, name: "leandrolasapa", minecraftName: "LeandroLaPapa", minecraftUuid: "065df5d6ca8945ad848853ee561caae6", skinTexture: "https://textures.minecraft.net/texture/5bff65172922c6077bcb474286849b5dc444a5fa79d3ed2ce410ec4f00ede613", kickName: "lasapaaaaa" },
+  { id: 31, name: "fernandavaal", minecraftName: "fernandavaal" },
+  { id: 32, name: "coll4zos", minecraftName: "coll4zos", minecraftUuid: "d6eca5b23fbc45f98f073bd6a9ebe8ee", skinTexture: "https://textures.minecraft.net/texture/73fbec93d58351022fe88aae4b5668ab758f2867921e02a6d13e55710b4a85b9" },
+  { id: 33, name: "eypiedra", minecraftName: "eypiedra", kickName: "piedra" },
+  { id: 34, name: "jilikat", minecraftName: "jilikatt" },
+  { id: 35, name: "ichurrox", minecraftName: "iChurro", minecraftUuid: "56830c9af38f427496d09a980500e6ae", skinTexture: "https://textures.minecraft.net/texture/773a16f6f220901decfc8af2df58746027e9d59d5fb86853ce3862da06639cbf" },
+  { id: 36, name: "serpias", minecraftName: "serpias" },
+  { id: 37, name: "conterstine", minecraftName: "conterstine" },
+  { id: 38, name: "vickypalami", minecraftName: "vickypalami" },
+  { id: 39, name: "laparce", minecraftName: "laparce" },
+  { id: 40, name: "Girlofnox", minecraftName: "Girlofnox" }
+];
+
+const adminTokenKey = "bunker-admin-token";
+const isAdminPage = window.location.pathname.replace(/\/+$/, "") === "/admin";
+let adminToken = localStorage.getItem(adminTokenKey) || "";
+let isAdminAuthenticated = Boolean(adminToken);
+const defaultDead = new Set();
+const players = creators.map((creator) => ({
+  ...creator,
+  kickName: creator.kickName || makeKickSlug(creator.name),
+  status: defaultDead.has(creator.id) ? "dead" : "alive",
+  palette: makePalette(creator.name, creator.id)
+}));
+
+const eventStartDate = new Date(2026, 4, 12);
+const eventLengthDays = 6;
+const kickCheckInterval = 5 * 60 * 1000;
+const statusRefreshInterval = 10 * 1000;
+const statusEndpoint = "/api/status";
+const adminLoginEndpoint = "/api/admin/login";
+const adminLogoutEndpoint = "/api/admin/logout";
+const kickProxyEndpoint = "/api/kick-live";
+const streamStates = new Map(players.map((player) => [player.id, { status: "checking", label: "Revisando" }]));
+
+const grid = document.querySelector("#players");
+const template = document.querySelector("#player-card-template");
+const searchInput = document.querySelector("#search");
+const filterButtons = [...document.querySelectorAll(".filter")];
+const eventDay = document.querySelector("#event-day");
+const eventDayBadge = document.querySelector("#event-day-badge");
+const liveCount = document.querySelector("#live-count");
+const liveBadge = document.querySelector("#live-badge");
+const aliveCount = document.querySelector("#alive-count");
+const deadCount = document.querySelector("#dead-count");
+const totalCount = document.querySelector("#total-count");
+const totalBadge = document.querySelector("#total-badge");
+const aliveProgress = document.querySelector("#alive-progress");
+const adminState = document.querySelector("#admin-state");
+const adminLoginForm = document.querySelector("#admin-login-form");
+const adminPassword = document.querySelector("#admin-password");
+const adminLogout = document.querySelector("#admin-logout");
+const adminMessage = document.querySelector("#admin-message");
+
+let activeFilter = "all";
+
+document.body.classList.toggle("admin-mode", isAdminPage);
+document.body.classList.toggle("public-mode", !isAdminPage);
+document.body.classList.toggle("admin-locked", isAdminPage && !isAdminAuthenticated);
+document.body.classList.toggle("admin-authenticated", isAdminPage && isAdminAuthenticated);
+
+function makeKickSlug(name) {
+  return name
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .replace(/[^a-z0-9_]/g, "");
+}
+
+function getEventDay(now = new Date()) {
+  const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  const start = new Date(eventStartDate.getFullYear(), eventStartDate.getMonth(), eventStartDate.getDate());
+  const daysSinceStart = Math.floor((today - start) / 86400000);
+
+  if (daysSinceStart < 0) return 1;
+  return Math.min(eventLengthDays, daysSinceStart + 1);
+}
+
+function updateEventDay() {
+  const day = getEventDay();
+  eventDay.textContent = day;
+  eventDayBadge.textContent = day;
+}
+
+function scheduleEventDayUpdate() {
+  const now = new Date();
+  const nextMidnight = new Date(now);
+  nextMidnight.setHours(24, 0, 2, 0);
+
+  window.setTimeout(() => {
+    updateEventDay();
+    scheduleEventDayUpdate();
+  }, nextMidnight - now);
+}
+
+function makePalette(name, id) {
+  const seed = [...name].reduce((sum, char) => sum + char.charCodeAt(0), id * 17);
+  const skins = ["#9d6b4f", "#b47a5e", "#d09a75", "#6f4938", "#e0b08d", "#8a5f4a"];
+  const hairs = ["#1b1713", "#3b2517", "#6b3b17", "#e09d26", "#f5f5f5", "#111827", "#5b2b83"];
+  const eyes = ["#202426", "#1f67ff", "#22ffaa", "#8f3dff", "#ff2b4f", "#f2f2f2"];
+
+  return {
+    skin: skins[seed % skins.length],
+    hair: hairs[(seed * 3) % hairs.length],
+    eye: eyes[(seed * 5) % eyes.length],
+    accent: seed % 4 === 0 ? "#23ff86" : seed % 4 === 1 ? "#ff234f" : seed % 4 === 2 ? "#ff9e2f" : "#ffffff",
+    shadow: "rgba(0, 0, 0, 0.22)"
+  };
+}
+
+function avatarPattern(player) {
+  const { skin, hair, eye, accent, shadow } = player.palette;
+  const hasMask = player.id % 9 === 0;
+  const hasHood = player.id % 11 === 0;
+  const hasGlow = player.id % 5 === 0;
+  const hairline = player.id % 3;
+  const pixels = Array(64).fill(skin);
+
+  const set = (indexes, color) => indexes.forEach((index) => pixels[index] = color);
+
+  set([0, 1, 2, 3, 4, 5, 6, 7], hair);
+  set(hairline === 0 ? [8, 9, 10, 11, 12, 13] : hairline === 1 ? [8, 9, 10, 14, 15] : [8, 9, 14, 15], hair);
+  set([16, 23, 24, 31], darken(skin));
+  set([26, 29], eye);
+  set([27, 28], hasGlow ? accent : "#f7f7f7");
+  set([34, 35, 36, 37], shadow);
+  set([43, 44], darken(skin));
+  set([50, 51, 52, 53], darken(skin));
+
+  if (hasMask) {
+    set([16, 17, 18, 19, 20, 21, 22, 23, 24, 31, 32, 39], "#101413");
+    set([27, 28], accent);
+  }
+
+  if (hasHood) {
+    set([0, 1, 2, 5, 6, 7, 8, 15, 16, 23, 24, 31, 32, 39, 40, 47], accent);
+  }
+
+  if (player.id % 7 === 0) {
+    set([2, 3, 4, 10, 11, 12], "#f1f1f1");
+  }
+
+  return pixels;
+}
+
+function darken(color) {
+  if (color.startsWith("rgba")) return color;
+  const value = color.replace("#", "");
+  const rgb = [0, 2, 4].map((start) => Math.max(0, parseInt(value.slice(start, start + 2), 16) - 32));
+  return `rgb(${rgb.join(",")})`;
+}
+
+function renderPixelAvatar(avatar, player) {
+  avatar.classList.add("is-pixel");
+  avatar.classList.remove("has-skin-texture");
+  avatar.replaceChildren();
+
+  avatarPattern(player).forEach((color) => {
+    const pixel = document.createElement("span");
+    pixel.className = "px";
+    pixel.style.background = color;
+    avatar.append(pixel);
+  });
+}
+
+function avatarUrls(player) {
+  if (player.minecraftUuid) {
+    return [
+      `https://crafthead.net/cube/${player.minecraftUuid}/128`,
+      `https://crafthead.net/helm/${player.minecraftUuid}/128`,
+      `https://crafatar.com/avatars/${player.minecraftUuid}?size=128&overlay`,
+      `https://crafthead.net/avatar/${player.minecraftUuid}/128`,
+      `https://api.mcheads.org/head/${encodeURIComponent(player.minecraftName)}/128`
+    ];
+  }
+
+  return [
+    `https://api.mcheads.org/head/${encodeURIComponent(player.minecraftName)}/128`,
+    `https://crafthead.net/avatar/${encodeURIComponent(player.minecraftName)}/128`
+  ];
+}
+
+function renderMinecraftHead(avatar, player) {
+  if (player.skinTexture) {
+    renderSkinTexture(avatar, player);
+    return;
+  }
+
+  avatar.classList.remove("is-pixel");
+  avatar.classList.remove("has-skin-texture");
+  avatar.replaceChildren();
+
+  const image = document.createElement("img");
+  const urls = avatarUrls(player);
+  let urlIndex = 0;
+
+  image.alt = "";
+  image.decoding = "async";
+  image.loading = "lazy";
+  image.src = urls[urlIndex];
+  image.addEventListener("error", () => {
+    urlIndex += 1;
+
+    if (urlIndex < urls.length) {
+      image.src = urls[urlIndex];
+      return;
+    }
+
+    renderPixelAvatar(avatar, player);
+  });
+  avatar.append(image);
+}
+
+function renderSkinTexture(avatar, player) {
+  avatar.classList.remove("is-pixel");
+  avatar.classList.add("has-skin-texture");
+  avatar.replaceChildren();
+
+  const skinHead = document.createElement("div");
+  const base = document.createElement("img");
+  const overlay = document.createElement("img");
+
+  skinHead.className = "skin-head";
+  base.className = "skin-layer skin-base";
+  overlay.className = "skin-layer skin-overlay";
+  base.alt = "";
+  overlay.alt = "";
+  base.decoding = "async";
+  overlay.decoding = "async";
+  base.loading = "lazy";
+  overlay.loading = "lazy";
+  base.src = player.skinTexture;
+  overlay.src = player.skinTexture;
+  base.addEventListener("error", () => {
+    player.skinTexture = "";
+    renderMinecraftHead(avatar, player);
+  }, { once: true });
+
+  skinHead.append(base, overlay);
+  avatar.append(skinHead);
+}
+
+function setAdminMessage(message, tone = "neutral") {
+  if (!adminMessage) return;
+  adminMessage.textContent = message;
+  adminMessage.dataset.tone = tone;
+}
+
+function updateAdminUi() {
+  if (!isAdminPage) return;
+
+  document.body.classList.toggle("admin-authenticated", isAdminAuthenticated);
+  document.body.classList.toggle("admin-locked", !isAdminAuthenticated);
+  adminState.textContent = isAdminAuthenticated ? "Sesion admin" : "Solo lectura";
+
+  if (isAdminAuthenticated) {
+    setAdminMessage("Puedes cambiar quienes aparecen con vida o eliminados.", "success");
+  } else {
+    setAdminMessage("Entra con la clave admin para editar estados.", "neutral");
+  }
+}
+
+function authHeaders() {
+  return adminToken ? { Authorization: `Bearer ${adminToken}` } : {};
+}
+
+function applyStatusMap(statuses = {}) {
+  let changed = false;
+
+  players.forEach((player) => {
+    const status = statuses[String(player.id)];
+    if (!["alive", "dead"].includes(status) || player.status === status) return;
+    player.status = status;
+    changed = true;
+  });
+
+  return changed;
+}
+
+async function loadStatuses({ silent = false } = {}) {
+  try {
+    const response = await fetch(statusEndpoint, { headers: { Accept: "application/json" } });
+    if (!response.ok) throw new Error("No se pudo leer el estado");
+
+    const payload = await response.json();
+    const changed = applyStatusMap(payload.statuses);
+
+    if (changed) render();
+    if (!silent && isAdminPage) setAdminMessage("Estados sincronizados.", "success");
+  } catch (error) {
+    if (!silent && isAdminPage) {
+      setAdminMessage("No se pudieron cargar los estados del servidor.", "error");
+    }
+  }
+}
+
+async function updatePlayerStatus(player, status) {
+  const previousStatus = player.status;
+  player.status = status;
+  render();
+  setAdminMessage(`Guardando estado de ${player.name}...`);
+
+  try {
+    const response = await fetch(`/api/players/${player.id}/status`, {
+      method: "PATCH",
+      headers: {
+        ...authHeaders(),
+        "Content-Type": "application/json",
+        Accept: "application/json"
+      },
+      body: JSON.stringify({ status })
+    });
+
+    if (response.status === 401) {
+      adminToken = "";
+      isAdminAuthenticated = false;
+      localStorage.removeItem(adminTokenKey);
+      updateAdminUi();
+      throw new Error("Sesion admin vencida");
+    }
+
+    if (!response.ok) throw new Error("No se pudo guardar");
+
+    const payload = await response.json();
+    applyStatusMap(payload.statuses);
+    render();
+    setAdminMessage(`${player.name} ahora aparece como ${status === "alive" ? "vivo" : "muerto"}.`, "success");
+  } catch (error) {
+    player.status = previousStatus;
+    render();
+    setAdminMessage(error.message || "No se pudo guardar el cambio.", "error");
+  }
+}
+
+async function handleAdminLogin(event) {
+  event.preventDefault();
+  const password = adminPassword.value.trim();
+
+  if (!password) {
+    setAdminMessage("Escribe la clave admin.", "error");
+    return;
+  }
+
+  setAdminMessage("Verificando clave...");
+
+  try {
+    const response = await fetch(adminLoginEndpoint, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json"
+      },
+      body: JSON.stringify({ password })
+    });
+
+    if (!response.ok) throw new Error("Clave incorrecta");
+
+    const payload = await response.json();
+    adminToken = payload.token;
+    isAdminAuthenticated = true;
+    localStorage.setItem(adminTokenKey, adminToken);
+    adminPassword.value = "";
+    updateAdminUi();
+    render();
+    await loadStatuses({ silent: true });
+  } catch (error) {
+    adminToken = "";
+    isAdminAuthenticated = false;
+    localStorage.removeItem(adminTokenKey);
+    updateAdminUi();
+    render();
+    setAdminMessage(error.message || "No se pudo iniciar sesion.", "error");
+  }
+}
+
+async function handleAdminLogout() {
+  if (adminToken) {
+    fetch(adminLogoutEndpoint, {
+      method: "POST",
+      headers: authHeaders()
+    }).catch(() => {});
+  }
+
+  adminToken = "";
+  isAdminAuthenticated = false;
+  localStorage.removeItem(adminTokenKey);
+  updateAdminUi();
+  render();
+}
+
+function updateLiveStats() {
+  const live = [...streamStates.values()].filter((state) => state.status === "live").length;
+  liveCount.textContent = live;
+  liveBadge.textContent = live;
+}
+
+function updateStats() {
+  const alive = players.filter((player) => player.status === "alive").length;
+  const dead = players.length - alive;
+  aliveCount.textContent = alive;
+  deadCount.textContent = dead;
+  totalCount.textContent = players.length;
+  totalBadge.textContent = players.length;
+  aliveProgress.style.width = `${(alive / players.length) * 100}%`;
+  updateLiveStats();
+}
+
+function parseKickPayload(payload) {
+  const data = Array.isArray(payload?.data) ? payload.data[0] : payload?.data || payload;
+  const livestream = data?.livestream || data?.stream || data?.current_livestream;
+  const isLive = Boolean(data?.is_live || livestream?.is_live || livestream?.id || livestream?.session_title);
+
+  return {
+    isLive,
+    title: livestream?.session_title || livestream?.title || data?.stream_title || "",
+    viewerCount: livestream?.viewer_count || livestream?.viewers || data?.viewer_count || 0
+  };
+}
+
+async function fetchKickStatus(player) {
+  const channel = encodeURIComponent(player.kickName);
+  const urls = [
+    `${kickProxyEndpoint}?channel=${channel}`,
+    `https://api.kick.com/public/v1/channels/${channel}`,
+    `https://kick.com/api/v2/channels/${channel}`
+  ];
+
+  for (const url of urls) {
+    try {
+      const response = await fetch(url, { headers: { Accept: "application/json" } });
+      if (!response.ok) continue;
+
+      const payload = await response.json();
+      return parseKickPayload(payload);
+    } catch (error) {
+      continue;
+    }
+  }
+
+  return null;
+}
+
+async function refreshKickStatuses() {
+  await Promise.all(players.map(async (player) => {
+    const result = await fetchKickStatus(player);
+    const previous = streamStates.get(player.id);
+
+    if (!result) {
+      streamStates.set(player.id, previous?.status === "live"
+        ? previous
+        : { status: "unknown", label: "Sin señal" });
+      return;
+    }
+
+    streamStates.set(player.id, result.isLive
+      ? { status: "live", label: "En vivo", title: result.title, viewerCount: result.viewerCount }
+      : { status: "offline", label: "Offline" });
+  }));
+
+  render();
+}
+
+function render() {
+  const query = searchInput.value.trim().toLowerCase();
+  const filtered = players.filter((player) => {
+    const matchesQuery = player.name.toLowerCase().includes(query)
+      || player.minecraftName.toLowerCase().includes(query)
+      || player.kickName.toLowerCase().includes(query)
+      || String(player.id).includes(query);
+    const matchesFilter = activeFilter === "all" || player.status === activeFilter;
+    return matchesQuery && matchesFilter;
+  });
+
+  grid.replaceChildren();
+
+  if (!filtered.length) {
+    const empty = document.createElement("div");
+    empty.className = "empty-state";
+    empty.textContent = "Sin registros encontrados";
+    grid.append(empty);
+    updateStats();
+    return;
+  }
+
+  filtered.forEach((player) => {
+    const node = template.content.firstElementChild.cloneNode(true);
+    const button = node.querySelector(".status-toggle");
+    const stream = node.querySelector(".stream-status");
+    const avatar = node.querySelector(".avatar");
+    const streamState = streamStates.get(player.id) || { status: "checking", label: "Revisando" };
+
+    node.classList.toggle("is-dead", player.status === "dead");
+    node.querySelector(".rank").textContent = `# ${player.id}`;
+    node.querySelector("h2").textContent = player.name;
+    node.querySelector("p").textContent = player.status === "alive" ? "Con vida" : "Eliminado";
+
+    button.dataset.status = player.status;
+    button.textContent = player.status === "alive" ? "Vivo" : "Muerto";
+    button.disabled = isAdminPage && !isAdminAuthenticated;
+    button.setAttribute("aria-label", `Cambiar estado de ${player.name}`);
+    button.addEventListener("click", () => {
+      if (!isAdminPage || !isAdminAuthenticated) return;
+      updatePlayerStatus(player, player.status === "alive" ? "dead" : "alive");
+    });
+
+    stream.href = `https://kick.com/${player.kickName}`;
+    stream.dataset.stream = streamState.status;
+    stream.textContent = streamState.label;
+    stream.title = streamState.status === "live" && streamState.title
+      ? `${streamState.title}${streamState.viewerCount ? ` - ${streamState.viewerCount} viewers` : ""}`
+      : `Abrir canal de Kick: ${player.kickName}`;
+
+    renderMinecraftHead(avatar, player);
+
+    grid.append(node);
+  });
+
+  updateStats();
+}
+
+filterButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    activeFilter = button.dataset.filter;
+    filterButtons.forEach((item) => item.classList.toggle("active", item === button));
+    render();
+  });
+});
+
+searchInput.addEventListener("input", render);
+
+if (isAdminPage) {
+  adminLoginForm.addEventListener("submit", handleAdminLogin);
+  adminLogout.addEventListener("click", handleAdminLogout);
+  updateAdminUi();
+}
+
+updateEventDay();
+scheduleEventDayUpdate();
+render();
+loadStatuses({ silent: true });
+window.setInterval(() => loadStatuses({ silent: true }), statusRefreshInterval);
+refreshKickStatuses();
+window.setInterval(refreshKickStatuses, kickCheckInterval);

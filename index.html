@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>El Bunker</title>
+    <link rel="icon" href="assets/logo/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" href="assets/logo/favicon-bunker.png">
+    <link rel="apple-touch-icon" href="assets/logo/favicon-bunker.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Inter:wght@500;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="shell">
+      <section class="panel hero-panel" aria-labelledby="page-title">
+        <img class="hero-watermark" src="assets/logo/bunker-logo-green.png" alt="" aria-hidden="true">
+
+        <div class="title-block">
+          <h1 id="page-title">El Bunker</h1>
+          <img class="official-logo" src="assets/logo/bunker-logo-green.png" alt="El Bunker">
+          <p class="subtitle">Registro de supervivencia</p>
+        </div>
+
+        <div class="event-strip" aria-label="Datos del evento">
+          <div class="event-card">
+            <span class="event-icon" id="event-day-badge">1</span>
+            <div>
+              <span>Dia</span>
+              <strong id="event-day">1</strong>
+            </div>
+          </div>
+          <div class="event-card">
+            <span class="event-icon live-icon" id="live-badge">0</span>
+            <div>
+              <span>En Kick</span>
+              <strong id="live-count">0</strong>
+            </div>
+          </div>
+          <div class="event-card">
+            <span class="event-icon">Z</span>
+            <div>
+              <span>Amenaza</span>
+              <strong>Alta</strong>
+            </div>
+          </div>
+          <div class="event-card">
+            <span class="event-icon" id="total-badge">0</span>
+            <div>
+              <span>Creadores</span>
+              <strong id="total-count">0</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="tracker-bar">
+          <div class="track-stat alive">
+            <span>Vivos</span>
+            <strong id="alive-count">0</strong>
+          </div>
+          <div class="track-stat dead">
+            <span>Muertos</span>
+            <strong id="dead-count">0</strong>
+          </div>
+          <div class="progress-shell" aria-hidden="true">
+            <span id="alive-progress"></span>
+          </div>
+        </div>
+      </section>
+
+      <section class="admin-panel" id="admin-panel" aria-label="Panel de administracion">
+        <div>
+          <span>Admin</span>
+          <strong id="admin-state">Solo lectura</strong>
+        </div>
+        <form id="admin-login-form">
+          <label>
+            <span>Clave</span>
+            <input id="admin-password" type="password" autocomplete="current-password" placeholder="CLAVE ADMIN">
+          </label>
+          <button type="submit">Entrar</button>
+        </form>
+        <button id="admin-logout" type="button">Salir</button>
+        <p id="admin-message"></p>
+      </section>
+
+      <section class="controls" aria-label="Controles de rastreo">
+        <label class="search-field">
+          <span aria-hidden="true"></span>
+          <input id="search" type="search" placeholder="BUSCA POR NOMBRE O NUMERO..." autocomplete="off">
+        </label>
+        <div class="filter-group" role="group" aria-label="Filtrar jugadores">
+          <button class="filter active" type="button" data-filter="all">Todos</button>
+          <button class="filter" type="button" data-filter="alive">Vivos</button>
+          <button class="filter" type="button" data-filter="dead">Muertos</button>
+        </div>
+      </section>
+
+      <section class="grid" id="players" aria-live="polite"></section>
+
+      <footer class="site-footer">
+        <div class="studio-brand" aria-label="Cheese Studio">
+          <img class="studio-logo" src="assets/logo/cheese-studio-logo.png" alt="">
+          <span>Cheese Studio</span>
+        </div>
+        <p>Copyright &copy; CheeseStudio 2026</p>
+      </footer>
+    </main>
+
+    <template id="player-card-template">
+      <article class="player-card">
+        <button class="status-toggle" type="button"></button>
+        <a class="stream-status" target="_blank" rel="noopener"></a>
+        <div class="rank"></div>
+        <div class="avatar" aria-hidden="true"></div>
+        <h2></h2>
+        <p></p>
+      </article>
+    </template>
+
+    <script src="script.js"></script>
+  </body>
+</html>

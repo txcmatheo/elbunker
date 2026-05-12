@@ -1,0 +1,19 @@
+{
+  "name": "el-bunker-tracker",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Rastreador de supervivencia para El Bunker con avatares Minecraft y estado de stream en Kick.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "check": "node --check server.js && node --check script.js"
+  },
+  "keywords": [
+    "el-bunker",
+    "minecraft",
+    "kick",
+    "tracker"
+  ],
+  "license": "UNLICENSED"
+}
+
