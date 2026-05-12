@@ -121,7 +121,7 @@ function scheduleEventDayUpdate() {
   window.setTimeout(() => {
     updateEventDay();
     scheduleEventDayUpdate();
-  }, nextMidnight - now);
+  }, delay);
 }
 
 function makePalette(name, id) {
