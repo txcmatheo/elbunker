@@ -41,10 +41,15 @@ const creators = [
   { id: 40, name: "Girlofnox", minecraftName: "Girlofnox" }
 ];
 
-const adminTokenKey = "bunker-admin-token";
-const isAdminPage = window.location.pathname.replace(/\/+$/, "") === "/admin";
-let adminToken = localStorage.getItem(adminTokenKey) || "";
-let isAdminAuthenticated = Boolean(adminToken);
+const adminTokenKey = "bunker-admin-authenticated";
+const storageKey = "bunker-player-statuses";
+const adminPasswordValue = "bunker-admin";
+const pathName = window.location.pathname.replace(/\/+$/, "");
+const isAdminPage = pathName.endsWith("/admin")
+  || pathName.endsWith("/admin.html")
+  || new URLSearchParams(window.location.search).has("admin")
+  || window.location.hash === "#admin";
+let isAdminAuthenticated = localStorage.getItem(adminTokenKey) === "1";
 const defaultDead = new Set();
 const players = creators.map((creator) => ({
   ...creator,
@@ -56,11 +61,6 @@ const players = creators.map((creator) => ({
 const eventStartDate = new Date(2026, 4, 12);
 const eventLengthDays = 6;
 const kickCheckInterval = 5 * 60 * 1000;
-const statusRefreshInterval = 10 * 1000;
-const statusEndpoint = "/api/status";
-const adminLoginEndpoint = "/api/admin/login";
-const adminLogoutEndpoint = "/api/admin/logout";
-const kickProxyEndpoint = "/api/kick-live";
 const streamStates = new Map(players.map((player) => [player.id, { status: "checking", label: "Revisando" }]));
 
 const grid = document.querySelector("#players");
@@ -290,10 +290,6 @@ function updateAdminUi() {
   }
 }
 
-function authHeaders() {
-  return adminToken ? { Authorization: `Bearer ${adminToken}` } : {};
-}
-
 function applyStatusMap(statuses = {}) {
   let changed = false;
 
@@ -307,62 +303,31 @@ function applyStatusMap(statuses = {}) {
   return changed;
 }
 
-async function loadStatuses({ silent = false } = {}) {
+function readStoredStatuses() {
   try {
-    const response = await fetch(statusEndpoint, { headers: { Accept: "application/json" } });
-    if (!response.ok) throw new Error("No se pudo leer el estado");
-
-    const payload = await response.json();
-    const changed = applyStatusMap(payload.statuses);
-
-    if (changed) render();
-    if (!silent && isAdminPage) setAdminMessage("Estados sincronizados.", "success");
+    return JSON.parse(localStorage.getItem(storageKey) || "{}");
   } catch (error) {
-    if (!silent && isAdminPage) {
-      setAdminMessage("No se pudieron cargar los estados del servidor.", "error");
-    }
+    return {};
   }
 }
 
-async function updatePlayerStatus(player, status) {
-  const previousStatus = player.status;
+function saveStatuses() {
+  const statusMap = Object.fromEntries(players.map((player) => [player.id, player.status]));
+  localStorage.setItem(storageKey, JSON.stringify(statusMap));
+}
+
+function loadStatuses() {
+  if (applyStatusMap(readStoredStatuses())) render();
+}
+
+function updatePlayerStatus(player, status) {
   player.status = status;
+  saveStatuses();
   render();
-  setAdminMessage(`Guardando estado de ${player.name}...`);
-
-  try {
-    const response = await fetch(`/api/players/${player.id}/status`, {
-      method: "PATCH",
-      headers: {
-        ...authHeaders(),
-        "Content-Type": "application/json",
-        Accept: "application/json"
-      },
-      body: JSON.stringify({ status })
-    });
-
-    if (response.status === 401) {
-      adminToken = "";
-      isAdminAuthenticated = false;
-      localStorage.removeItem(adminTokenKey);
-      updateAdminUi();
-      throw new Error("Sesion admin vencida");
-    }
-
-    if (!response.ok) throw new Error("No se pudo guardar");
-
-    const payload = await response.json();
-    applyStatusMap(payload.statuses);
-    render();
-    setAdminMessage(`${player.name} ahora aparece como ${status === "alive" ? "vivo" : "muerto"}.`, "success");
-  } catch (error) {
-    player.status = previousStatus;
-    render();
-    setAdminMessage(error.message || "No se pudo guardar el cambio.", "error");
-  }
+  setAdminMessage(`${player.name} ahora aparece como ${status === "alive" ? "vivo" : "muerto"}.`, "success");
 }
 
-async function handleAdminLogin(event) {
+function handleAdminLogin(event) {
   event.preventDefault();
   const password = adminPassword.value.trim();
 
@@ -371,47 +336,23 @@ async function handleAdminLogin(event) {
     return;
   }
 
-  setAdminMessage("Verificando clave...");
-
-  try {
-    const response = await fetch(adminLoginEndpoint, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json"
-      },
-      body: JSON.stringify({ password })
-    });
-
-    if (!response.ok) throw new Error("Clave incorrecta");
-
-    const payload = await response.json();
-    adminToken = payload.token;
-    isAdminAuthenticated = true;
-    localStorage.setItem(adminTokenKey, adminToken);
-    adminPassword.value = "";
-    updateAdminUi();
-    render();
-    await loadStatuses({ silent: true });
-  } catch (error) {
-    adminToken = "";
+  if (password !== adminPasswordValue) {
     isAdminAuthenticated = false;
     localStorage.removeItem(adminTokenKey);
     updateAdminUi();
     render();
-    setAdminMessage(error.message || "No se pudo iniciar sesion.", "error");
+    setAdminMessage("Clave incorrecta.", "error");
+    return;
   }
+
+  isAdminAuthenticated = true;
+  localStorage.setItem(adminTokenKey, "1");
+  adminPassword.value = "";
+  updateAdminUi();
+  render();
 }
 
-async function handleAdminLogout() {
-  if (adminToken) {
-    fetch(adminLogoutEndpoint, {
-      method: "POST",
-      headers: authHeaders()
-    }).catch(() => {});
-  }
-
-  adminToken = "";
+function handleAdminLogout() {
   isAdminAuthenticated = false;
   localStorage.removeItem(adminTokenKey);
   updateAdminUi();
@@ -450,7 +391,6 @@ function parseKickPayload(payload) {
 async function fetchKickStatus(player) {
   const channel = encodeURIComponent(player.kickName);
   const urls = [
-    `${kickProxyEndpoint}?channel=${channel}`,
     `https://api.kick.com/public/v1/channels/${channel}`,
     `https://kick.com/api/v2/channels/${channel}`
   ];
@@ -567,7 +507,6 @@ if (isAdminPage) {
 updateEventDay();
 scheduleEventDayUpdate();
 render();
-loadStatuses({ silent: true });
-window.setInterval(() => loadStatuses({ silent: true }), statusRefreshInterval);
+loadStatuses();
 refreshKickStatuses();
 window.setInterval(refreshKickStatuses, kickCheckInterval);
