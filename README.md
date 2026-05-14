@@ -16,7 +16,7 @@ GitHub Pages no tiene servidor ni base de datos. Los cambios hechos desde el pan
 
 ## Caracteristicas
 
-- Lista de 40 participantes con numeracion continua.
+- Lista de 41 participantes con numeracion continua.
 - Filtros por todos, vivos y muertos.
 - Busqueda por nombre, numero, usuario de Minecraft o usuario de Kick.
 - Avatares estilo Minecraft.
