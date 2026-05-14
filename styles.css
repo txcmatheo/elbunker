@@ -31,7 +31,7 @@ body {
     radial-gradient(circle at 20% 10%, rgba(35, 255, 134, 0.24), transparent 28rem),
     radial-gradient(circle at 82% 12%, rgba(255, 35, 79, 0.2), transparent 24rem),
     linear-gradient(180deg, rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.94)),
-    url("assets/bunker-reference.jpg") center top / cover fixed;
+    url("assets/bunker-reference.png") center top / cover fixed;
   letter-spacing: 0;
 }
 
